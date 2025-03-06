@@ -3,10 +3,12 @@ import java.util.Scanner;
 import java.util.Random;
 
 public class Main {
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Lets play Rock Paper Sezer game : ");
         System.out.println("Where input 1 = Rock, 2 = Paper, 3 = Sezer");
+        String[] choice={"sezer","Paper","Rock"};
         System.out.print("Enter the number how many time you want to play : ");
         short number = sc.nextShort();
         short playTime = 0;
@@ -15,16 +17,7 @@ public class Main {
         while(playTime<number){
             System.out.print("Choose one of them ---> Rock \tPaper \tSezer : ");
             byte player_inp = sc.nextByte();
-            String player_str;
-            if(player_inp%3==1){
-                player_str ="Rock";
-            }
-            else if(player_inp%3==2){
-                player_str ="Paper";
-            }
-            else {
-                player_str ="Sezer";
-            }
+            String player_str = choice[player_inp%3];
             System.out.println("You select "+ player_str);
             System.out.print(", Lets see what PC choose...");
 
@@ -32,15 +25,7 @@ public class Main {
 
             Random rand = new Random();
             byte rand_int = (byte) (rand.nextInt(3));
-            String pc_str;
-            if(rand_int==0){
-                pc_str = "Rock";
-            } else if (rand_int==1) {
-                pc_str = "Paper";
-            }
-            else{
-                pc_str = "Sezer";
-            }
+            String pc_str=choice[rand_int];
             System.out.println("PC select : "+pc_str);
             if(player_str.equals(pc_str)){
                 System.out.println("Match Draw");
